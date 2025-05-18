@@ -16,11 +16,12 @@ WORKDIR /app
 
 COPY --from=builder /app/dist ./dist
 COPY --from=builder /app/package*.json ./
+COPY wait-for.sh .
+COPY start.sh .
 
 RUN npm install --only=production
-
-ENV NODE_ENV=production
+RUN chmod +x wait-for.sh start.sh
 
 EXPOSE 3000
 
-CMD ["node", "dist/main"]
+CMD ["sh", "./start.sh"]

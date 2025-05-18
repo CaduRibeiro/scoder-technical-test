@@ -76,3 +76,10 @@ docker compose up --build -d
 - A arquitetura segue o padrão de microsserviços orientado a eventos
 - O código está estruturado para facilitar manutenção e escalabilidade
 - Todos os módulos possuem README detalhado com instruções específicas
+
+---
+
+## ✍️ Autor
+
+Desenvolvido por Carlos Eduardo Ribeiro
+Desafio técnico para a empresa Scoder (2025)
