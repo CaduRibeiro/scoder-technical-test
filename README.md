@@ -1,79 +1,78 @@
-# Scoder Feedback – Infrastructure as Code (IaC)
+# 🧪 Scoder Technical Test – Fullstack Event-Driven System
 
-This project defines the cloud infrastructure for the _Scoder Feedback_ system using **AWS CDK with TypeScript**. It demonstrates the ability to provision a secure, scalable, and observable environment for a distributed application using Infrastructure as Code.
+Este projeto é um desafio técnico para a empresa **Scoder**, com foco em demonstrar habilidades práticas em:
 
----
-
-## 📌 Project Overview
-
-The infrastructure supports a containerized backend application built with NestJS and designed to work with Kafka and a MySQL database. The system includes:
-
-- A Virtual Private Cloud (VPC) with public and private subnets across two availability zones
-- An ECS cluster running a Fargate service to host the backend API
-- An Application Load Balancer (ALB) to handle incoming HTTP requests
-- An Amazon RDS instance (MySQL) for persistent data storage
-- Secrets Manager for secure management of database credentials
-- Auto-scaling configuration based on CPU utilization
+- 🏗️ Infraestrutura como Código (IaC) com AWS CDK
+- ⚙️ Backend assíncrono com NestJS e Kafka
+- 💻 Frontend moderno com React, Tailwind e TypeScript
 
 ---
 
-## ✅ Functionalities
+## 📦 Estrutura do projeto
 
-- Provisioning of a full production-ready environment using AWS CDK
-- Secure communication between services inside a private network
-- Load balancing and horizontal auto-scaling for ECS containers
-- Automatic generation and storage of database credentials
-- Integration-ready for Kafka and NestJS-based microservices
+```
+scoder-technical-test/
+├── scoder-iac/ # Infraestrutura AWS CDK (ECS, RDS, ALB, etc.)
+├── scoder-api/ # Backend com NestJS, Kafka e MySQL
+└── scoder-web/ # Frontend (React + Tailwind)
+```
 
 ---
 
-## 🚀 How to Deploy
+## 🎯 Funcionalidades principais
 
-### 1. Prerequisites
+- Envio e processamento assíncrono de feedbacks via Kafka
+- Armazenamento dos feedbacks em banco MySQL
+- Visualização dos feedbacks no frontend em tempo real
+- Infraestrutura automatizada e escalável na AWS
 
-Ensure the following tools are installed and configured:
+---
 
-- [Node.js](https://nodejs.org/)
-- [AWS CLI](https://docs.aws.amazon.com/cli/latest/userguide/)
-- [AWS CDK](https://docs.aws.amazon.com/cdk/latest/guide/)
-- Docker (for container image creation and testing)
-- AWS account and credentials configured via `aws configure`
+## 🚀 Como rodar localmente (usando Docker)
 
-### 2. Install dependencies
-
-From the `scoder-iac/` directory, run:
+1. Clone o repositório:
 
 ```bash
-npm install
+git clone https://github.com/seu-usuario/scoder-technical-test.git
+cd scoder-technical-test
 ```
+
+2. Suba todos os serviços com:
 
 ```bash
-npm run build
+docker compose up --build -d
 ```
 
-```bash
-cdk deploy
-```
+3. Acesse os serviços:
 
-This will create all AWS resources defined in the CDK stack.
+| Serviço        | URL                           |
+| -------------- | ----------------------------- |
+| Frontend React | http://localhost:5173         |
+| API NestJS     | http://localhost:3000         |
+| MySQL          | localhost:3306 (usuário root) |
 
 ---
 
-### Notes
+## 📁 Documentação por módulo
 
-- The default container image is node:18. Replace it with your application image from Docker Hub.
-- The RDS instance is created with deletion enabled and is not publicly accessible.
-- Secrets are generated and stored securely in AWS Secrets Manager.
+- 📘 [Infraestrutura (CDK)](./scoder-iac/README.md)
+- ⚙️ [Backend (NestJS + Kafka)](./scoder-api/README.md)
+- 💻 [Frontend (React + Tailwind)](./scoder-web/README.md)
 
-## 📁 Directory Structure
+---
 
-```
-scoder-iac/
-├── bin/
-│   └── scoder-iac.ts
-├── lib/
-│   └── scoder-iac-stack.ts
-├── package.json
-├── cdk.json
-└── README.md
-```
+## ✅ Tecnologias utilizadas
+
+- AWS CDK (TypeScript)
+- ECS Fargate, RDS (MySQL), Secrets Manager
+- NestJS, Kafka, TypeORM
+- React + Vite + TailwindCSS
+- Docker e Docker Compose
+
+---
+
+## 🧠 Observações
+
+- A arquitetura segue o padrão de microsserviços orientado a eventos
+- O código está estruturado para facilitar manutenção e escalabilidade
+- Todos os módulos possuem README detalhado com instruções específicas
