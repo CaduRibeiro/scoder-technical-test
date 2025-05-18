@@ -23,8 +23,11 @@ scoder-iac/
 │ └── scoder-iac.ts # Arquivo de entrada do CDK
 ├── lib/
 │ └── scoder-iac-stack.ts # Definição principal da infraestrutura
+├── test/
+│ └── scoder-iac-stack.test.ts # Testes com Jest e assertions do CDK
 ├── package.json
 ├── tsconfig.json
+├── jest.config.js
 ├── cdk.json
 └── README.md
 ```
@@ -64,6 +67,30 @@ cdk deploy
 ```
 
 O comando criará todos os recursos na nuvem. Pode levar alguns minutos no primeiro deploy.
+
+---
+
+## 🧪 Testes automatizados
+
+Este módulo inclui testes automatizados com Jest e o utilitário Template do CDK para garantir que os recursos foram definidos corretamente.
+
+### ✔️ O que é testado:
+
+- Criação de VPC, ECS Cluster, RDS, ALB
+- Configuração de auto scaling com uso de CPU
+- Snapshot da infraestrutura para rastrear mudanças futuras
+
+### ▶️ Rodar os testes:
+
+```bash
+npm run test
+```
+
+### 🔁 Atualizar snapshot (caso necessário):
+
+```bash
+npm run test -- -u
+```
 
 ---
 
