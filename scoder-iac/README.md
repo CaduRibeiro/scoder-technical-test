@@ -72,11 +72,8 @@ O comando criará todos os recursos na nuvem. Pode levar alguns minutos no prime
 - A senha do banco de dados é gerada e armazenada no **AWS Secrets Manager**
 - O serviço ECS é exposto publicamente via ALB (porta 80)
 - O banco RDS **não é acessível publicamente**, apenas dentro da VPC
-- Os recursos têm `bash removalPolicy: DESTROY` apenas para fins de teste (use com cuidado em produção)
+- Os recursos têm `removalPolicy: DESTROY` apenas para fins de teste (use com cuidado em produção)
+- Troque a imagem node:18 no Fargate por sua aplicação dockerizada
+- Os nomes dos tópicos Kafka e outras configurações do backend devem ser gerenciados via variáveis de ambiente
 
 ---
-
-## 🔐 Dicas
-
-- Troque a imagem node:18 no Fargate por sua aplicação dockerizada (ex: andreza/scoder-api)
-- Os nomes dos tópicos Kafka e outras configurações do backend devem ser gerenciados via variáveis de ambiente
