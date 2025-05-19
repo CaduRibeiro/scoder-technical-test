@@ -44,4 +44,29 @@ export class FeedbackService implements OnModuleInit {
       order: { createdAt: 'DESC' },
     });
   }
+
+  async findPaginated(
+    page: number = 1,
+    limit: number = 5,
+  ): Promise<{
+    data: Feedback[];
+    total: number;
+    page: number;
+    lastPage: number;
+  }> {
+    const [data, total] = await this.feedbackRepository.findAndCount({
+      order: { createdAt: 'DESC' },
+      take: limit,
+      skip: (page - 1) * limit,
+    });
+
+    const lastPage = Math.ceil(total / limit);
+
+    return {
+      data,
+      total,
+      page,
+      lastPage,
+    };
+  }
 }

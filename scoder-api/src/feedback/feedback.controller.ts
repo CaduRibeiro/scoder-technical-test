@@ -1,8 +1,9 @@
 import {
   Controller,
-  Post,
   Get,
+  Post,
   Body,
+  Query,
   HttpException,
   HttpStatus,
 } from '@nestjs/common';
@@ -14,8 +15,16 @@ export class FeedbackController {
   constructor(private readonly feedbackService: FeedbackService) {}
 
   @Get()
-  async getAll(): Promise<Feedback[]> {
-    return this.feedbackService.findAll();
+  async getPaginated(
+    @Query('page') page = 1,
+    @Query('limit') limit = 5,
+  ): Promise<{
+    data: Feedback[];
+    total: number;
+    page: number;
+    lastPage: number;
+  }> {
+    return this.feedbackService.findPaginated(+page, +limit);
   }
 
   @Post()

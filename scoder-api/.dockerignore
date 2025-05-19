@@ -1,0 +1,17 @@
+# Ignora dependências (serão instaladas no build)
+node_modules
+dist
+
+# Ignora controle de versão
+.git
+.gitignore
+
+# Ignora arquivos de sistema e IDE
+*.log
+*.env
+.vscode
+.DS_Store
+npm-debug.log
+
+# Ignora o build do frontend (caso já tenha rodado localmente)
+build
